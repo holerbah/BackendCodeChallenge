@@ -9,13 +9,13 @@ import lombok.Data;
 @Data
 public class BatteryDTO {
 
-    @NotBlank
+    @NotBlank(message = "Name must not be blank")
     private String name;
 
-    @Min(1000)
+    @Positive(message = "Postcode value must be a positive value")
     private int postcode;
 
-    @Positive
+    @Positive(message = "Watt capacity value must be a positive value")
     private double wattCapacity;
 
 }
