@@ -1,6 +1,6 @@
 # BackendCodeChallenge
 
-# Podesavanje baze
+# Podešavanje baze
 Baza: MySQL
 Kreiranje baze: 
 CREATE DATABASE virtual_power_plant;
