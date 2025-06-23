@@ -33,10 +33,6 @@ public class BatteryServiceImpl implements BatteryService {
     @Override
     public BatteryStatisticsResponse getBatteriesInRange(int from, int to) {
 
-        if (from < 0 || to < 0 || from > to) {
-            throw new IllegalArgumentException("Invalid postcode range: from=" + from + ", to=" + to);
-        }
-
         List<Battery> batteries = batteryRepository.findByPostcodeBetween(from, to);
 
         Comparator<Battery> batteryComparator = Comparator.comparing(Battery::getName);

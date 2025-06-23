@@ -40,10 +40,15 @@ public class BatteryController {
     @Operation(summary = "Get batteries in postcode range")
     @ApiResponse(responseCode = "200", description = "Returns batteries with statistics")
     @GetMapping
-    public ResponseEntity<BatteryStatisticsResponse> getBatteriesInRange(
+    public ResponseEntity<?> getBatteriesInRange(
             @Parameter(description = "From postcode") @RequestParam int fromPostcode,
             @Parameter(description = "To postcode") @RequestParam int toPostcode)
     {
+
+        if (fromPostcode < 0 || toPostcode < 0 || fromPostcode > toPostcode) {
+            return ResponseEntity.badRequest().body("Invalid postcode range: from=" + fromPostcode + ", to=" + toPostcode);
+        }
+
         return ResponseEntity.ok(batteryService.getBatteriesInRange(fromPostcode, toPostcode));
     }
 
